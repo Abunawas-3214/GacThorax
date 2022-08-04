@@ -1,6 +1,7 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
 import os
 import shutil
+from ProgramUtama import GAC
 
 app = Flask(__name__)
 
