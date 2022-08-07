@@ -6,4 +6,3 @@ def PreProcessing(Image):
     unsharp_image = cv2.addWeighted(image, 2.5, gaussian_3, -1.5, 10)
     Preimage = (unsharp_image - 0.5 * unsharp_image)
     return Preimage
-

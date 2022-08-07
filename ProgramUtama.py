@@ -29,4 +29,4 @@ def GAC():
     # Mendapatkan Nilai Akurasi
     ImageTest = cv2.imread('static/uploads/result.jpg', 0)
     akurasi = vd.validate(ImageTest)
-    print('Akurasi = '+akurasi)
+    print('Akurasi = ',akurasi)
