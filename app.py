@@ -30,6 +30,34 @@ def delete_files():
 
 @app.route('/')
 def home():
+    delete_files()
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        flash('No image selected for uploading')
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        delete_files()
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.jpg'))
+        flash('Image successfully uploaded and displayed below')
+        GAC()
+        return render_template('index.html', filename='result.jpg')
+    else:
+        flash('Allowed image types are - png, jpg, jpeg, gif')
+        return redirect(request.url)
+
+@app.route('/display/<filename>')
+def display_image(filename):
+    return redirect(url_for('static', filename='uploads/' + filename), code=301)
+
+@app.route('/result')
+def result():
     return render_template('index.html')
 
 if __name__ == '__main__':
