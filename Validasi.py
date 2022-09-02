@@ -22,13 +22,7 @@ def getAccuration(ImgTest, ImgManual):
     accuration = ((TP + TN) / (TP+TN+FP+FN)) * 100
     return accuration
 
-def validate(ImageTest):
-    ManualImagePath = 'static/manual/'
-    dir_list = os.listdir(ManualImagePath)
-    bestAccuration = 0
-    for i in dir_list:
-        ManualImage = cv2.imread('static/manual/' + i, 0)
-        accImage = getAccuration(ImageTest, ManualImage)
-        if bestAccuration < accImage:
-            bestAccuration = accImage
-    return bestAccuration
+def validate(ImgTest, ManualImage):
+    ImgManual = np.asarray(cv2.imread(('static/manual/' + str(ManualImage)), 0))
+    accImage = getAccuration(ImgTest, ImgManual)
+    return accImage

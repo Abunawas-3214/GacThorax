@@ -45,8 +45,8 @@ def upload_image():
     if file and allowed_file(file.filename):
         delete_files()
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.jpg'))
-        flash('Image successfully uploaded and displayed below')
-        GAC()
+        accuration = GAC(file.filename)
+        flash(accuration)
         return render_template('index.html', filename='result.jpg')
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')

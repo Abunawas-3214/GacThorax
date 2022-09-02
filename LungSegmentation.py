@@ -6,7 +6,7 @@ def LungSegmentation(Img, init_mask, max_its, alpha):
     phi = mask2phi(init_mask)
 
     for its in range(max_its):
-        print('loop:', its)
+        # print('loop:', its)
         idx = np.where((phi <= 3.0) & (phi >= -3.0))
         idx = list(zip(idx[1], idx[0]))
         idx_size = list(np.shape(idx))[0]

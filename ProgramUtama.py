@@ -6,9 +6,9 @@ import Validasi as vd
 
 UPLOAD_FOLDER = 'static/uploads/'
 
-def GAC():
+def GAC(filename):
     Img = cv2.imread('static/uploads/upload.jpg', 0)
-    max_its = 10
+    max_its = 2
     # Pre Processing
     Img = Pre.PreProcessing(Img)
 
@@ -28,5 +28,7 @@ def GAC():
 
     # Mendapatkan Nilai Akurasi
     ImageTest = cv2.imread('static/uploads/result.jpg', 0)
-    akurasi = vd.validate(ImageTest)
-    print('Akurasi = ',akurasi)
+    akurasi = vd.validate(ImageTest, filename)
+
+    return round(akurasi, 2)
+    # print('Akurasi = ', akurasi)
