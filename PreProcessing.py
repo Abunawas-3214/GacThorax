@@ -72,6 +72,3 @@ def PreProcessing(Image):
 
     preimage = unsharp(data_curve)
     return preimage
-
-Img = cv2.imread('JPCLN001.jpg')
-PreProcessing(Img)
