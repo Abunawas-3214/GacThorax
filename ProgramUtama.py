@@ -10,7 +10,7 @@ def GAC(filename):
     Img = cv2.imread('static/uploads/upload.jpg', 0)
     max_its = 2
     # Pre Processing
-    # Img = Pre.PreProcessing(Img)
+    Img = Pre.PreProcessing(Img)
 
     # Segmentasi paru-paru kanan
     init_mask_kanan = np.zeros((256, 256))
