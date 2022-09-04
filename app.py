@@ -1,6 +1,7 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
 import os
 import shutil
+from threading import Thread
 from ProgramUtama import GAC
 
 app = Flask(__name__)
@@ -28,6 +29,16 @@ def delete_files():
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+class startProcess():
+    def __init__(self, filename):
+        self.filename = filename
+
+    def segproc(self):
+        GAC(self.filename)
+
+    def run(self):
+        self.segproc()
+
 @app.route('/')
 def home():
     delete_files()
@@ -45,8 +56,11 @@ def upload_image():
     if file and allowed_file(file.filename):
         delete_files()
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.jpg'))
-        accuration = GAC(file.filename)
-        flash(accuration)
+        t = Thread(target=startProcess(file.filename).run())
+        t.start()
+        # accuration = GAC(file.filename)
+        # flash(accuration)
+        flash('Nice Try')
         return render_template('index.html', filename='result.jpg')
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
