@@ -26,16 +26,6 @@ def get_level_peaks(v):
         i = pos_right
 
     peaks = np.array(peaks)
-
-    """
-    # uncomment this part of the code
-    # to include first and last positions
-
-    first_pos, last_pos = 0, v.size-1
-    peaks = np.append([first_pos], peaks)
-    peaks = np.append(peaks, [last_pos])
-    """
-
     return peaks
 
 def unsharp(Image):
@@ -45,7 +35,7 @@ def unsharp(Image):
     for i in range(unsharp_image.shape[0]):
         for j in range(unsharp_image.shape[1]):
             unsharp_image[i][j] = unsharp_image[i][j] - 0.5 * unsharp_image[i][j]
-    cv2.imwrite('static/uploads/preproc.jpg', unsharp_image)
+    # cv2.imwrite('static/uploads/preproc.jpg', unsharp_image)
     return unsharp_image
 
 def PreProcessing(Image):

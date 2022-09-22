@@ -55,7 +55,6 @@ def LungSegmentation(Img, init_mask, max_its, alpha):
     seg = np.where(phi <= 0, 255, 0)
     return seg
 
-
 # converts a mask to a SDF
 def mask2phi(init_a):
     def bwdist(M):
