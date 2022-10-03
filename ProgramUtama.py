@@ -8,7 +8,7 @@ UPLOAD_FOLDER = 'static/uploads/'
 
 def GAC(filename):
     Img = cv2.imread(('static/uploads/'+str(filename)), 0)
-    max_its = 300
+    max_its = 10
     # Pre Processing
     Img = Pre.PreProcessing(Img)
 
@@ -24,10 +24,10 @@ def GAC(filename):
 
     # Hasil segmentasi
     Result = ParuKanan + ParuKiri
-    cv2.imwrite(('static/uploads/'+str(filename)), Result)
+    cv2.imwrite(('static/uploads/result.jpg'), Result)
 
     # Mendapatkan Nilai Akurasi
-    ImageTest = cv2.imread(('static/uploads/'+str(filename)), 0)
+    ImageTest = cv2.imread(('static/uploads/result.jpg'), 0)
     akurasi = vd.validate(ImageTest, filename)
 
     return round(akurasi, 2)

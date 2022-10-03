@@ -47,7 +47,7 @@ def upload_image():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         accuration = GAC(file.filename)
         flash(accuration)
-        return render_template('index.html', filename=file.filename)
+        return render_template('index.html', filename='result.jpg')
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
