@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  gacthorax:
+    image: gacthorax
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080"
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - gacthorax
+    ports:
+      - "80:80"
