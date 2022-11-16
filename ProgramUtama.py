@@ -8,7 +8,7 @@ UPLOAD_FOLDER = 'static/uploads/'
 
 def GAC(filename):
     Img = cv2.imread(('static/uploads/'+str(filename)), 0)
-    max_its = 300
+    max_its = 100
     # Pre Processing
     Img = Pre.PreProcessing(Img)
 
