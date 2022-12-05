@@ -3,7 +3,7 @@ from scipy import ndimage
 
 def LungSegmentation(Img, init_mask, max_its, alpha):
     I = Img.astype(float)
-    phi = mask2phi(init_mask)
+    phi = mask2phi(init_mask)   #Mengubah Mask to Phi (Menggunakan menggunakan metode bwdist)
 
     for its in range(max_its):
         # print('loop:', its)
